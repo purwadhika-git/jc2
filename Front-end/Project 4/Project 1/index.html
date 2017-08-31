@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Document</title>
+
+    <script>
+
+        function ConvertJSON(){
+
+            var json = '{"name" : "Employee 1"}';
+            
+            var obj = JSON.parse(json);
+            var obj2 = { name : "Employee 1" };
+            var data = JSON.stringify(obj);
+
+            console.log(json);
+            console.log(obj);
+            console.log(data);
+        }
+
+        ConvertJSON();
+
+
+        function maxNum() {
+            //var arr = [10, 1, 7, 8, 6 , 3];
+            
+            //var result = 0;
+            // for (var i = 0; i < arr.length; i++) {
+            //     if (arr[i] > result) {
+            //         result = arr[i];
+            //     }
+            // }
+
+            // arr.forEach(
+            //     function(element){
+            //         //alert(element);
+            //         console.log(element);
+            //     }
+            // );
+
+            // var objects = { name : "Name", address : "Address" };
+            // for (var key in objects) {
+            //     alert(objects[key]);
+            // }
+
+            //var result = Math.max.apply(null, arr);
+            
+            //alert(result);
+        }
+
+        maxNum();
+
+        function getObject(){
+            var str = ""; // string
+            var nmb = 10; // number
+            var obj = {
+                name : "Product 1",
+                price : 1000
+            }; // object
+            var ar = ['A','B','C','D']; // array
+
+            for (var i = 0; i < ar.length; i++) {
+                alert(ar[i]);
+            }
+
+            //alert(obj.name);
+        }
+
+        function tambah() {
+            var val1 = document.getElementById('val1').value;
+            var val2 = document.getElementById('val2').value;
+            var result = document.getElementById('result');
+
+            result.innerHTML = parseInt(val1) + parseInt(val2);
+
+        }
+
+        function ChangeName() {
+
+            var div = document.getElementById('name');
+            div.innerHTML = 'New Value';
+
+            var img = document.getElementById('myImage');
+            img.src = "img/bola2.jpg";
+            
+            var val1 = document.getElementById('val1').value;
+            alert(val1);
+
+        }
+
+        function foo(p1) {
+
+            if(typeof(p1) == 'number')
+                return 0;
+            else
+                return 'zero';
+            
+
+        }
+
+    </script>
+
+</head>
+<body>
+    
+    <div id="name"> My Name </div>
+    <img src="img/bola.jpg" alt="" width="100px" id="myImage">
+    
+    <input type="text" name="" id="val1">
+    <input type="text" name="" id="val2">
+    <div id="result"></div>
+
+    <input type="button" value="Sum" onclick="getObject()" >
+
+</body>
+</html>

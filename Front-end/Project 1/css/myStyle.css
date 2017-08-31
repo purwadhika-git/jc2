@@ -1,0 +1,46 @@
+body {
+    background-color: #e2e2e2;
+}
+
+#content{
+    background-color: #ffffff;
+    padding: 10px;
+    margin: 10px;
+     border-radius: 5px;
+
+     clear: both;
+}
+
+#content h3 {
+    color: #E4A60E;
+}
+
+#logo{
+    float: left;
+}
+
+#menu{
+    float: right;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+    margin: 3px 8px 3px 8px;
+    text-decoration: none;
+
+    background-color: #E4A60E;
+}
