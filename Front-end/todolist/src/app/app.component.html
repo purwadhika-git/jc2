@@ -17,7 +17,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label>To Do</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" [(ngModel)]="ToDo" >
       </div>
       <button class="btn btn-default" (click)="AddToDo()" ><b>+</b> Add To Do</button>
 
@@ -29,27 +29,23 @@
       <h3 class="panel-title">To Do List</h3>
     </div>
     <div class="panel-body">
-      <table class="table table-striped">
+      <table class="table table-striped table-bordered">
         <tr>
           <th>To Do</th>
           <th></th>
+          <th></th>
         </tr>
-        <tr>
-          <td>First Task</td>
+        <tr *ngFor="let t of ToDoList; index as i" >
+          <td>{{ t.todo }}</td>
           <td>
-              <button type="button" class="btn btn-danger">
+              <input type="checkbox" value="">
+          </td>
+          <td>
+              <button type="button" class="btn btn-danger" (click)="DeleteToDo(i)" >
                 <span class="glyphicon glyphicon-trash"></span> Delete
               </button>
           </td>
         </tr>
-        <tr>
-            <td>First Task</td>
-            <td>
-                <button type="button" class="btn btn-danger">
-                  <span class="glyphicon glyphicon-trash"></span> Delete
-                </button>
-            </td>
-          </tr>
       </table>
     </div>
   </div>
