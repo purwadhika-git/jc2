@@ -1,0 +1,27 @@
+<div id="header">
+  <h1> PROFILE GENERATOR </h1>
+  <p>Simple Profile Generator</p>
+</div>
+
+<div id="profile" class="col-md-6 col-md-offset-3">
+  <img src="{{ picture }}" alt="" id="profile-image" class="img-responsive img-circle" >
+  <div id="name" >{{ name }}</div>
+  <div id="email" >{{ email }}</div>
+  <div id="phone" >{{ phoneNumber }}</div>
+  <button type="button" class="btn btn-primary" (click)="RefreshData()" >Refresh</button>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+  <table>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let u of UserList">
+      <td> {{ u.name }} </td>
+      <td> {{ u.email }} </td>
+      <td> {{ u.phoneNumber }} </td>
+    </tr>
+  </table>
+</div>
