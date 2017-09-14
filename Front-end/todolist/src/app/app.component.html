@@ -35,13 +35,13 @@
           <th></th>
           <th></th>
         </tr>
-        <tr *ngFor="let t of GetData();" [ngClass]="{'ToDoComplete':Completed}"  >
+        <tr *ngFor="let t of ToDoListFirebase | async" [ngClass]="{'ToDoComplete':Completed}"  >
           <td>{{ t.todo }}</td>
           <td>
-              <input type="checkbox" value="" (change)="CompleteToDo($event, t.id)" >
+              <input type="checkbox" value="" (change)="CompleteToDo($event, t.$key)" >
           </td>
           <td>
-              <button type="button" class="btn btn-danger" (click)="DeleteToDo(t.id)" >
+              <button type="button" class="btn btn-danger" (click)="DeleteToDo(t.$key)" >
                 <span class="glyphicon glyphicon-trash"></span> Delete
               </button>
           </td>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 
 @Component({
@@ -38,22 +38,39 @@ export class AppComponent {
     .subscribe(
       result => {
 
+        this.UserList = [];
         result.json().results.forEach(user => {
-          
           this.UserList.push({
             "name" : user.name.first + ' ' + user.name.last,
             "email" : user.email,
             "phoneNumber" : user.phone
           });
-
         });
-        
+
       },
       error => { 
         console.log(error);
       }
     );
 
+  }
+
+  PostData(){
+    var body = JSON.stringify({
+        "email": "sydney@fife"
+    });
+    var hd = new Headers({ "Content-Type" : "application/json" });
+    var options = new RequestOptions({ headers : hd });
+
+    this.http.post("https://reqres.in/api/register", body, options)
+    .subscribe(
+      result => {
+        console.log(result.json())
+      },
+      error => {
+        console.log(error)
+      }
+    );
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+import { Observable } from "rxjs/Observable";
+import { AngularFireDatabase, FirebaseListObservable } from "angularfire2/database";
+import * as firebase from "firebase/app";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,30 +15,42 @@ export class AppComponent {
   ToDoList : object[] = [];
   Completed : boolean = false;
 
+  ToDoListFirebase : FirebaseListObservable<any[]>;
+
+ constructor(private db : AngularFireDatabase){
+  
+  this.ToDoListFirebase = db.list('/mytodo', {
+    query: {
+      limitToLast : 50
+    }
+  });
+
+ }
+
   AddToDo () : void {
     if (this.ToDo != "") {
 
-      var obj : object;
+      var obj : object = { "todo" : this.ToDo, "deleted" : false, "completed" : false };
+      this.ToDoListFirebase.push(obj);
 
-      if (this.ToDoList.length != 0) {
-        var lastId = this.ToDoList[this.ToDoList.length - 1]["id"];
-        obj = { "id" : lastId + 1,  "todo" : this.ToDo, "deleted" : false, "completed" : false };
-      }
-      else {
-        obj = { "id" : 1,  "todo" : this.ToDo, "deleted" : false, "completed" : false };
-      }
+      // if (this.ToDoList.length != 0) {
+      //   var lastId = this.ToDoList[this.ToDoList.length - 1]["id"];
+      //   obj = { "id" : lastId + 1,  "todo" : this.ToDo, "deleted" : false, "completed" : false };
+      // }
+      // else {
+      //   obj = { "id" : 1,  "todo" : this.ToDo, "deleted" : false, "completed" : false };
+      // }
 
-      this.ToDoList.push(obj);
+      // this.ToDoList.push(obj);
+
+
       this.ToDo = "";
-
-      console.log(this.ToDoList);
-
     }
   }
 
   GetData() : object[]{
     var newList : object[] = [];
-    
+
     for (var i = 0; i < this.ToDoList.length; i++) {
       
       var todo = this.ToDoList[i];
@@ -53,15 +69,21 @@ export class AppComponent {
     return newList;
   }
 
-  DeleteToDo(id) : void {
+  DeleteToDo(key) : void {
 
-    for (var i = 0; i < this.ToDoList.length; i++) {
-      if (this.ToDoList[i]["id"] == id) {
-        this.ToDoList[i]["deleted"] = true;
-        break;
-      }
-    }
-    console.log(this.ToDoList);
+    //this.ToDoListFirebase.remove(key);
+    //this.db.object('/mytodo/' + key).remove();
+    this.db.object('/mytodo/' + key).update({ deleted : true });
+    
+    // for (var i = 0; i < this.ToDoList.length; i++) {
+    //   if (this.ToDoList[i]["id"] == id) {
+    //     this.ToDoList[i]["deleted"] = true;
+    //     break;
+    //   }
+    // }
+    
+    //console.log(id);
+
     //this.ToDoList[index]["deleted"] = true;
     //this.ToDoList.splice(index, 1);
   }
