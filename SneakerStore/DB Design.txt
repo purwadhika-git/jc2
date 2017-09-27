@@ -1,0 +1,70 @@
+https://invis.io/XDDJO5C53
+
+nama project : SneakerStore[Front/Back]
+bikin angular 4 + laravel
+
+===========================================================
+
+product
+--------
+- id
+- name
+- color
+- unit_price
+- description
+
+product_details
+---------------
+- id
+- product_id [FK]
+- size
+- stock
+
+product_image
+-------------
+- id
+- product_id [FK]
+- image
+- default
+
+cart
+----
+- id
+- transaction_date
+- user_id [FK]
+- total_price
+- shipping
+
+cart_details
+-------------
+- id
+- cart_id [FK]
+- product_details_id [FK]
+- qty
+- unit_price
+
+user
+----
+- id
+- name
+- address
+- email
+- phone_number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
