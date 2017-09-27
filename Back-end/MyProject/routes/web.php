@@ -17,8 +17,8 @@
 
 
 Route::get('/todo', 'ToDoController@GetToDo');
-
 Route::post('/addtodo', 'ToDoController@AddToDo');
+Route::post('/deletetodo/{id}', 'ToDoController@DeleteToDo');
 
 
 

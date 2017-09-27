@@ -37,9 +37,13 @@
                     <tr>
                         <td> {{ $d->description }} </td>
                         <td>
-                            <button type="submit" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span> Delete
-                            </button>
+                            <form action="{{ url('/deletetodo/' . $d->id) }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span> Delete
+                                </button>
+
+                            </form>
                         </td>
                     </tr>
             @endforeach
