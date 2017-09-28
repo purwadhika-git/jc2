@@ -13,7 +13,7 @@ product
 - unit_price
 - description
 
-product_details
+product_detail // ProductDetail
 ---------------
 - id
 - product_id [FK]
@@ -26,6 +26,15 @@ product_image
 - product_id [FK]
 - image
 - default
+
+user
+----
+- id
+- name
+- address
+- email
+- phone_number
+
 
 cart
 ----
@@ -42,14 +51,6 @@ cart_details
 - product_details_id [FK]
 - qty
 - unit_price
-
-user
-----
-- id
-- name
-- address
-- email
-- phone_number
 
 
 
