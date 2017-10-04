@@ -1,0 +1,8 @@
+
+<div *ngFor="let p of productList" >
+  Name {{ p.name }} | Price {{ p.unit_price }} | Image {{ p.image }}
+
+  <img src="http://localhost:8000{{ p.image }}" alt="">
+  
+  <br>
+</div>
