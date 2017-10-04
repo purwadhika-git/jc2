@@ -19,9 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
+Route::group(['prefix' => 'user'], function() {
+    Route::post('/signup', 'UserController@SignUp');
+    Route::post('/signin', 'UserController@SignIn');
+});
+
 Route::group(['prefix' => 'product'], function() {
     
-    Route::get('/getallproduct', 'ProductController@GetAllProduct');
+    Route::get('/getallproduct', 'ProductController@GetAllProduct')->middleware('jwt.auth');
 
 });
 

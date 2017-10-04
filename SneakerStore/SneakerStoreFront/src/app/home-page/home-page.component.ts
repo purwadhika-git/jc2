@@ -17,10 +17,9 @@ export class HomePageComponent implements OnInit {
     this.http.get("http://localhost:8000/api/product/getallproduct").subscribe(
       result => {
         this.productList = result.json();
-        console.log(this.productList);
       },
       error => {
-
+        
       }
     );
   }
