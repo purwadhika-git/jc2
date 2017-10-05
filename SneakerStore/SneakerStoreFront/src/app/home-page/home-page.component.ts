@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 
 @Component({
@@ -14,12 +14,19 @@ export class HomePageComponent implements OnInit {
   constructor(private http:Http) { }
 
   ngOnInit() {
-    this.http.get("http://localhost:8000/api/product/getallproduct").subscribe(
+
+    var token = localStorage.getItem("token");
+    console.log(token);
+    var hdr = new Headers({ "Authorization" : "Bearer " + token});
+    
+    var options = new RequestOptions({ headers : hdr });
+    this.http.get("http://localhost:8000/api/product/getallproduct", options)
+    .subscribe(
       result => {
         this.productList = result.json();
       },
       error => {
-        
+        console.log('Error !');
       }
     );
   }
