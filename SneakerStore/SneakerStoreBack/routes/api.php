@@ -27,6 +27,7 @@ Route::group(['prefix' => 'user'], function() {
 Route::group(['prefix' => 'product'], function() {
     
     Route::get('/getallproduct', 'ProductController@GetAllProduct')->middleware('jwt.auth');
+    Route::post('/saveproductimage', 'ProductController@SaveProductImage');
 
 });
 
