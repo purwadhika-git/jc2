@@ -31,4 +31,8 @@ export class HomePageComponent implements OnInit {
     );
   }
 
+  redirectToProduct(){
+    
+  }
+
 }

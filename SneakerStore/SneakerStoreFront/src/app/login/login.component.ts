@@ -44,4 +44,9 @@ export class LoginComponent implements OnInit {
 
   }
 
+  redirectToProduct(){
+    var productId = 1;
+    this.router.navigate(['/product', productId]);
+  }
+
 }
