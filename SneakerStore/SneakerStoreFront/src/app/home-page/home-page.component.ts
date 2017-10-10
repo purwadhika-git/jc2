@@ -15,12 +15,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 
-    var token = localStorage.getItem("token");
-    console.log(token);
-    var hdr = new Headers({ "Authorization" : "Bearer " + token});
-    
-    var options = new RequestOptions({ headers : hdr });
-    this.http.get("http://localhost:8000/api/product/getallproduct", options)
+    this.http.get("http://localhost:8000/api/product/getallproduct")
     .subscribe(
       result => {
         this.productList = result.json();
@@ -29,6 +24,21 @@ export class HomePageComponent implements OnInit {
         console.log('Error !');
       }
     );
+
+    // var token = localStorage.getItem("token");
+    // console.log(token);
+    // var hdr = new Headers({ "Authorization" : "Bearer " + token});
+    
+    //var options = new RequestOptions({ headers : hdr });
+    // this.http.get("http://localhost:8000/api/product/getallproduct", options)
+    // .subscribe(
+    //   result => {
+    //     this.productList = result.json();
+    //   },
+    //   error => {
+    //     console.log('Error !');
+    //   }
+    // );
   }
 
   redirectToProduct(){

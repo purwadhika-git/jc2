@@ -1,8 +1,9 @@
-
 <div *ngFor="let p of productList" >
-  Name {{ p.name }} | Price {{ p.unit_price }} | Image {{ p.image }}
-
-  <img src="http://localhost:8000{{ p.image }}" alt="">
-  
+  <a href="" routerLink="/productdetails/{{ p.id }}" >
+    <div class="col-xs-12 col-md-4">
+      <img src="http://localhost:8000{{ p.image }}" alt="" style="width:100%">
+      <div>Name {{ p.name }} | Price {{ p.unit_price }}</div>
+    </div>
+  </a>
   <br>
 </div>

@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductComponent } from './product/product.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductComponent } from './product/product.component';
     LoginComponent,
     RegisterComponent,
     ProductComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule,
@@ -25,6 +27,7 @@ import { ProductComponent } from './product/product.component';
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
       { path: 'product/:product_id', component: ProductComponent },
+      { path: 'productdetails/:product_id', component: ProductDetailsComponent },
   ])
   ],
   providers: [],

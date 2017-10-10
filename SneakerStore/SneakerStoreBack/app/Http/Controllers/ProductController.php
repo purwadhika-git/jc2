@@ -53,6 +53,10 @@ class ProductController extends Controller
             $product = DB::selectOne('select id, name, unit_price, 
                 description from products 
                 where id = ' . $productId . ' ');
+
+            if (empty($product)) {
+                return response()->json(['message' => 'Product Not Found'], 404);
+            }
             
             $productDetails = DB::select('select id product_details_id,
                 size, stock from product_details 
@@ -71,7 +75,7 @@ class ProductController extends Controller
         }
         catch(\Exception $e){
             DB::rollback();
-            return response()->json(['message' => 'Failed to create user, exception:' + $e], 500); 
+            return response()->json(['message' => 'Failed to create user, exception:' + $e], 500);
         }
     }
 
