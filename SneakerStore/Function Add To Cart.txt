@@ -1,0 +1,35 @@
+AddToCart(product_details_id, customer_id, qty)
+	- get price from (product detail join product by product_details_id)
+	
+	- get cart_id, transaction_code, dll from table cart by customer_id
+	
+	- if(not found)	
+		- input ke table cart
+			- user_id <= customer_id
+			- transaction_code <= generate random string
+			- transaction_date <= date.now
+			- total_price <= qty * price
+			- shipping <= ''
+	- else 
+		- update cart by cart_id
+			- total_price
+	
+	cd = get from cart_details where product_details_id == product_details_id
+	
+	if(cd not found)	
+		- input ke table cart_details
+			- cart_id <= hasil insert 
+			- product_details_id <= product_details_id
+			- qty <= qty
+			- unit_price <= price
+	else
+		- update qty from cart_details
+		
+		
+		
+		
+		
+		
+		
+		
+		
